@@ -11,20 +11,27 @@ function getFile() {
   }
 
 
-
+var FormData = new FormData();
 (function() {
     var dropzone = document.getElementById("dropzone");
+    var uploadBtn = document.getElementById("upload")
+    
 
+    uploadBtn.onclick = function(e) {
+        submitFiles();
+    };
 
     var upload = function(files) {
-        var formData = new FormData();
-        var xhr = new XMLHttpRequest();
-
-
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
-            formData.append('file[]', file);
+            FormData.append('file[]', file);
         }
+   
+    }
+
+
+    var submitFiles = function() {
+        var xhr = new XMLHttpRequest();
 
         xhr.onload = function() {
             let data = this.responseText;
@@ -32,10 +39,10 @@ function getFile() {
         }
 
         xhr.open('post', 'php/upload.php');
-        console.log(formData);
-        xhr.send(formData);
-        
+        console.log(FormData);
+        xhr.send(FormData);
     }
+
 
     dropzone.ondragover = function() {
         this.className = "drop-box drop-box-hang";
@@ -50,29 +57,6 @@ function getFile() {
         e.preventDefault();
         this.className = "drop-box active-animatioon";
         upload(e.dataTransfer.files);
-        // var formData = new FormData();
-        // var xhr = new XMLHttpRequest();
-        
-        // xhr.onload = function() {
-        //     let data = this.responseText;
-        //     console.log(data);
-        // }
-
-        // var length = e.dataTransfer.items.length;
-        // for (var i = 0; i < length; i++) {
-        //     var entry = e.dataTransfer.items[i].webkitGetAsEntry();
-        //     if (entry.isFile) {
-        //         console.log(entry.name);
-        //         formData.append("file[]", entry);
-        //     }  else if (entry.isDirectory) {
-        //         console.log(entry.name);
-        //         formData.append("directory[]", entry);
-        //     }
-        // }
-        // xhr.open('post', 'php/upload.php');
-        // console.log(formData)
-        // xhr.send(formData);
-        
     }
 
 
