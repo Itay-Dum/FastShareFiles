@@ -117,20 +117,22 @@
                             <br>
                             <br>
                             <h3>Drag & Drop Here!</h3>
-                        
                             <form action="php/upload.php" method="POST" enctype="multipart/form-data" name="myForm">
                                 <div id="browse-files" onclick="getFile()">click to upload a file</div>
-                                <!-- this is your file input tag, so i hide it!-->
-                                <!-- i used the onchange event to fire the form submission-->
-                                <div style='height: 0px;width: 0px; overflow:hidden;'><input id="upfile" type="file" value="upload" onchange="sub(this)" /></div>
-                                <!-- here you can have file submit button or you can write a simple script to upload the file automatically-->
-                                <!-- <input type="submit" value='submit' > -->
-                              </form>
-
-
+                                <div style='height: 0px;width: 0px; overflow:hidden;'><input id="upfile" type="file" value="upload" onchange="sub(this)" /></div>   
+                            </form>
+                            <br><br>
+                            <div id="files-uploaded-area">
+                                <div id="default-text">
+                                    <br><br>
+                                    <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.2s">Files you upload will appear here!</h3>
+                                </div>
+                                
+                            </div>
                             <br>
                         </div>
                         <br>
+                        <br><br><br><br><br><br>
                         <a class="main-btn" id="upload" href="#">Upload</a>
                         <!-- <div class="navbar-btn d-none d-sm-inline-block">
                          

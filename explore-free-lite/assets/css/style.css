@@ -1764,3 +1764,49 @@ p {
   height: 8rem;
 }
 
+#files-uploaded-area {
+  overflow-y: scroll;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 8rem;
+  width: 72rem;
+  background-color: rgb(241, 239, 239);
+}
+
+.trash-can {
+  flex-grow: 0.4;
+  color:red;
+  height:20px;
+  width: 50px;
+}
+
+
+#files-download-area {
+  overflow-y: scroll;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 13rem;
+  width: 72rem;
+  background-color: rgb(241, 239, 239);
+}
+
+
+
+.file-item-row {
+  flex-grow: 0.4;
+  text-align: left;
+  background-color: rgb(241, 239, 239);
+  display: flex;
+  border-bottom: dashed rgb(179, 178, 178);
+}
+
+.file-name {
+  margin-left: 3rem;
+  margin-top: 1.5rem;
+}
+
+
