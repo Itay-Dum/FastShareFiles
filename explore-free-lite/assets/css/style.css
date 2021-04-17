@@ -514,7 +514,6 @@ p {
   .navbar-toggler .toggler-icon {
     width: 30px;
     height: 2px;
-    background-color: #fff;
     display: block;
     margin: 5px 0;
     position: relative;
@@ -582,7 +581,7 @@ p {
   .navbar-nav .nav-item a {
     font-size: 14px;
     font-weight: 600;
-    color: #fff;
+    color: black;
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
     -ms-transition: all 0.3s linear;
@@ -1770,8 +1769,9 @@ p {
   display: flex;
   flex-direction: column;
   align-content: center;
-  height: 8rem;
-  width: 72rem;
+  max-height: 5rem;
+  background-size: 15px 2px, 15px 2px, 2px 15px, 2px 15px;
+  background-position: left top, right bottom, left bottom, right top;
   background-color: rgb(241, 239, 239);
 }
 
@@ -1810,3 +1810,24 @@ p {
 }
 
 
+#browse-files {
+  cursor: pointer;
+}
+
+.upload-hero {
+  height: 5rem;
+  position: relative;
+  z-index: 5; }
+  @media only screen and (min-width: 1400px) {
+    .header-hero {
+      height: 990px; } }
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .header-hero {
+      height: auto; } }
+  @media (max-width: 767px) {
+    .header-hero {
+      height: auto; } }
+
+.black {
+  color:black;
+}

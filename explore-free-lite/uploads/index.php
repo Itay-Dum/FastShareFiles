@@ -1,12 +1,14 @@
 <?php
+include_once 'includes/db.inc.php';
+?>
 
+
+<?php
 if (!isset($_GET["id"])) 
 {
     echo "You must specify and id in the request parametres!";
     exit;
 }
-
-
 ?>
 
 
@@ -67,25 +69,58 @@ if (!isset($_GET["id"]))
 <body>
  
     <!--====== HEADER PART START ======-->
-    <?php
-        function successMsg($text, $boldText = "") {
-        $str = <<<EOD
-        <div class="alert alert-success" role="alert">
-        <strong>$boldText</strong> $text.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+    
+
+    <header class="header-area">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+        
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav m-auto">
+                                    <li class="nav-item active">
+                                        <a class="page-scroll" href="#home">Home</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="#service">Contribute</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div> 
+                            
+                           
+                        </nav> 
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+        <!-- <div id="alert-area"></div> -->
+
+        <div id="home" class="upload-hero" style="background-image: url(../assets/images/header-hero.jpg)">
+            <br><br><br>
+            <div class="header-shape">
+                <img src="../assets/images/shape/header-shape.png" alt="shape">
             </div>
-        EOD;
-        }
-  
-    ?>
+            <div id="alert-area"></div>
+        </div> <!-- header hero -->
+
+    </header>
+
+
    
     <section id="blog" class="blog-area pt-115 pb-120">
         <div class="container">
             <div class="header-hero-content text-center">
                 <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">Download Files</h1>
-                <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">Copy the link to these files <svg id="copy-btn" style="cursor:pointer;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                <h4 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">Copy the link to these files <svg id="copy-btn" style="cursor:pointer;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
   <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
   <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
 </svg></h4>

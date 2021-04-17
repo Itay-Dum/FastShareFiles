@@ -2,8 +2,6 @@
 
 header("Content-Type: application/json");
 
-$uploaded = array();
-echo var_dump($_FILES);
 
 if (!empty($_FILES['file']['name'][0])) {
     foreach ($_FILES['file']['name'] as $position => $name) {
