@@ -1,8 +1,8 @@
-function successMsg(text, boldText = "") {
+function AlertMsg(text, messageStatus="success", boldText = "") {
     let alerts = document.getElementById("alert-area");
     
     let str = `
-    <div class="alert alert-success fade show" role="alert">
+    <div class="alert alert-${messageStatus} fade show" role="alert">
     <strong>${boldText}</strong> ${text}.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -131,12 +131,16 @@ var FormData = new FormData();
 
         xhr.onload = function() {
             let data = this.responseText;
-            console.log(data);
+            let status = xhr.status;
+            if (status == 200) {
+                AlertMsg("Your files have been uploaded", "success", "Succefully uploaded files!")
+            }
         }
 
         xhr.open('post', 'php/upload.php');
-        console.log(FormData);
         xhr.send(FormData);
+        
+
         return false;
     }
 

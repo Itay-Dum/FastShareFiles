@@ -1,20 +1,26 @@
 <?php
 
-class DB {
+include_once 'config.inc.php';
+
+
+class DB extends DBConfig {
     private $username;
     private $servername;
     private $password;
     private $dbname;
     private $conn;
 
-    public function  __construct(string $uname, string $pwd, string $sname, string $dbname) {
-        $this->username = $uname;
-        $this->servername = $sname;
-        $this->password = $pwd;
-        $this->dbname = $dbname;
+    public function  __construct() {
+        $config = DBConfig::getConfig();
+        
+        $this->username = $config["username"];
+        $this->servername = $config["servername"];
+        $this->password = $config["password"];
+        $this->dbname = $config["dbname"];
+        $this->initDBConn();
     }
 
-    public function initConn() {
+    private function initDBConn() {
 
         $this->conn = new PDO (
             "mysql:host=$this->servername;dbname=$this->dbname",
@@ -25,7 +31,7 @@ class DB {
         
     }
 
-    public function createTestQuery($temp_name, $name, $upload_id) {
+    public function MakeNewFileQuery($temp_name, $name, $upload_id) {
 
         $stmt = $this->conn->prepare("INSERT INTO files (temp_name, name, upload_id)
         VALUES (:temp_name, :name, :upload_id)");
@@ -40,8 +46,7 @@ class DB {
 
 }
 
-$test = new DB("root", "", "127.0.0.1", "sharefiles");
-$test->initConn();
-$test->createTestQuery("ffdlf", "fdsf", "Dsds");
+$test = new DB();
+$test->MakeNewFileQuery("ffdlf", "fdsf", "Dsds");
 
 ?>

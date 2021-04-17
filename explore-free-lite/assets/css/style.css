@@ -1783,6 +1783,17 @@ p {
 }
 
 
+
+.alert-bottom {
+  position: fixed;
+  top: 5px;
+  left: 2%;
+  width: 96%;
+  
+}
+
+
+
 #files-download-area {
   overflow-y: scroll;
   border-radius: 20px;
