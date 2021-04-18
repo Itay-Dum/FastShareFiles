@@ -1,21 +1,33 @@
 <?php
 
+include_once 'includes/db.inc.php';
+include_once 'includes/uid.inc.php';
 header("Content-Type: application/json");
 
 
 if (!empty($_FILES['file']['name'][0])) {
+    $db = new DB();
+    $newUploadUrl = UID::guidv4();
+
     foreach ($_FILES['file']['name'] as $position => $name) {
-        if(move_uploaded_file($_FILES['file']['tmp_name'][$position], 'uploads/'.$name)) {
-            
-            
-            
-            
-            echo http_response_code(200);
+
+        $uidFileLocation = UID::guidv4();
+        
+        if (move_uploaded_file (
+            $_FILES['file']['tmp_name'][$position],
+            'uploads/'.
+             $uidFileLocation. "." .
+            end(explode(".", $name))
+            )
+        )
+        {
+            $db->MakeNewFileQuery($name, $uidFileLocation, $newUploadUrl);
         }
         else {
             echo http_response_code(400);
         }
     }
+    echo http_response_code(200);
 }
 
 ?>
