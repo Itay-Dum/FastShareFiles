@@ -1,7 +1,7 @@
 <?php
 
 include_once 'config.inc.php';
-
+include_once 'uid.inc.php';
 
 class DB extends DBConfig {
     private $username;
@@ -20,7 +20,7 @@ class DB extends DBConfig {
         $this->initDBConn();
     }
 
-    private function initDBConn() {
+    private function initDBConn() {    
 
         $this->conn = new PDO (
             "mysql:host=$this->servername;dbname=$this->dbname",
@@ -31,8 +31,8 @@ class DB extends DBConfig {
         
     }
 
-    public function MakeNewFileQuery($temp_name, $name, $upload_id) {
 
+    public function MakeNewFileQuery($temp_name, $name, $upload_id) {
         $stmt = $this->conn->prepare("INSERT INTO files (temp_name, name, upload_id)
         VALUES (:temp_name, :name, :upload_id)");
 
@@ -44,9 +44,29 @@ class DB extends DBConfig {
 
     }
 
+    public function IsIDExist($id) {
+        $stmt = $this->conn->prepare("SELECT 1 FROM files WHERE upload_id=:id");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        
+        return count($stmt->fetchAll()) > 0;
+    }
+
+    public function SelectFilesOnId($id) {
+        $stmt = $this->conn->prepare("SELECT name, temp_name FROM files
+        WHERE upload_id=:id");
+        
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $arr = $stmt->fetchAll();
+        
+        return $arr;
+    }
+
 }
 
 $test = new DB();
-$test->MakeNewFileQuery("ffdlf", "fdsf", "Dsds");
+
+// $test->MakeNewFileQuery("dumay.cat", "dsdsadsadsawd", "yourmom");
 
 ?>

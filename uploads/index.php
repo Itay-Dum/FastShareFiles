@@ -1,17 +1,10 @@
 <?php
-include_once 'includes/db.inc.php';
+include_once '../php/includes/db.inc.php';
+include_once '../php/includes/uploads.inc.php';
+
+$uploads = new Uploads();
+$uploads->verifyID();
 ?>
-
-
-<?php
-if (!isset($_GET["id"])) 
-{
-    echo "You must specify and id in the request parametres!";
-    exit;
-}
-?>
-
-
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -126,10 +119,11 @@ if (!isset($_GET["id"]))
 </svg></h4>
                 <br>
                 <div id="files-download-area">
-                    <span class="file-item-row"><h3 class="file-name">dummy.dumay</h3 ></span>
-                    <span class="file-item-row"><h3 class="file-name">dummy.dumay</h3></span>
-                    <span class="file-item-row"><h3 class="file-name">dummy.dumay</h3></span>
-                    <span class="file-item-row"><h3 class="file-name">dummy.dumay</h3 ></span>
+                    <?php $uploads->RenderFileNames();?>
+                    <!-- <span class="file-item-row"><h3 class="file-name">dummy.file</h3 ></span>
+                    <span class="file-item-row"><h3 class="file-name">dummy.file</h3></span>
+                    <span class="file-item-row"><h3 class="file-name">dummy.file</h3></span>
+                    <span class="file-item-row"><h3 class="file-name">dummy.file</h3 ></span> -->
                 </div>
                 <br>
                 <a class="main-btn" id="upload" href="#">Download</a>
