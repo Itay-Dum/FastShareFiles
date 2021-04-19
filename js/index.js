@@ -14,6 +14,14 @@ function AlertMsg(text, messageStatus="success", boldText = "") {
 }
 
 
+function DownloadFile(fileId) {
+    let queryString = window.location.search;
+    let urlParmas = new URLSearchParams(queryString);
+    let id = urlParmas.get("id");
+    window.location.href = `../php/uploads?id=${id}&fileId=${fileId}`; 
+}
+
+
 function copyToClipboard(text) {
     if (window.clipboardData && window.clipboardData.setData) {
         // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
@@ -68,7 +76,7 @@ var FormData = new FormData();
             input.type = 'file';
             input.onchange = _ => {
                 // you can use this method to get file and perform respective operations
-                let files =   Array.from(input.files);   
+                let files = Array.from(input.files);   
                 upload(files);
             };
             input.click();
@@ -135,7 +143,7 @@ var FormData = new FormData();
             if (status == 200) {
                 AlertMsg("Your files have been uploaded", "success", "Succefully uploaded files!")
             }
-            console.log(data);
+            window.location.href = `uploads?id=${data}`;
         }
         xhr.open('post', 'php/upload.php');
         xhr.send(FormData);

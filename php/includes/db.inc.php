@@ -46,11 +46,33 @@ class DB extends DBConfig {
 
     public function IsIDExist($id) {
         $stmt = $this->conn->prepare("SELECT 1 FROM files WHERE upload_id=:id");
+        
         $stmt->bindParam(":id", $id);
         $stmt->execute();
         
         return count($stmt->fetchAll()) > 0;
     }
+
+    public function IsFileIdExistOnUploadId($id, $file_id) {
+        $stmt = $this->conn->prepare("SELECT 1 FROM files WHERE upload_id=:id AND name=:fileid");
+        
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":fileid", $file_id);
+        $stmt->execute();
+
+        return count($stmt->fetchAll()) > 0;
+    } 
+
+    public function GetFileTempName($id, $file_id) {
+        $stmt = $this->conn->prepare("SELECT temp_name FROM files WHERE upload_id=:id AND name=:fileid");
+        
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":fileid", $file_id);
+        $stmt->execute();
+
+        return $stmt->fetchAll()[0]["temp_name"];
+    }
+
 
     public function SelectFilesOnId($id) {
         $stmt = $this->conn->prepare("SELECT name, temp_name FROM files
@@ -62,11 +84,5 @@ class DB extends DBConfig {
         
         return $arr;
     }
-
 }
-
-$test = new DB();
-
-// $test->MakeNewFileQuery("dumay.cat", "dsdsadsadsawd", "yourmom");
-
 ?>

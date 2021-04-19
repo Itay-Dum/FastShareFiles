@@ -1808,7 +1808,7 @@ p {
 
 
 .file-item-row {
-  flex-grow: 0.4;
+  flex-grow: 0.1;
   text-align: left;
   background-color: rgb(241, 239, 239);
   display: flex;
@@ -1841,4 +1841,12 @@ p {
 
 .black {
   color:black;
+}
+
+.download-button {
+  border:none;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  margin-left: 2rem;
 }

@@ -120,21 +120,14 @@ $uploads->verifyID();
                 <br>
                 <div id="files-download-area">
                     <?php $uploads->RenderFileNames();?>
-                    <!-- <span class="file-item-row"><h3 class="file-name">dummy.file</h3 ></span>
-                    <span class="file-item-row"><h3 class="file-name">dummy.file</h3></span>
-                    <span class="file-item-row"><h3 class="file-name">dummy.file</h3></span>
-                    <span class="file-item-row"><h3 class="file-name">dummy.file</h3 ></span> -->
                 </div>
                 <br>
-                <a class="main-btn" id="upload" href="#">Download</a>
+                <a class="main-btn" id="upload" href="#">Download All</a>
             </div>
-
         <br>
-        
-        <!-- <div class="navbar-btn d-none d-sm-inline-block">
             
         </div> -->
-        </div> <!-- header hero content -->
+        </div> <!-- header hero content -->  
         </div> 
     </section>
 
