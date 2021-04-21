@@ -1,4 +1,4 @@
-## FastShareFiles 
+# ShareFiles https://sharefiles.ml/
 
 Share your files easily with your friends by simply dragging them over. You will recieve a link with all of these files, all without having the usual hussle of signing up. 
 
